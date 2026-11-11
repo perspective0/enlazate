@@ -1,4 +1,4 @@
-import {FormEvent,useEffect,useMemo,useState} from 'react';
+import {FormEvent,KeyboardEvent as ReactKeyboardEvent,PointerEvent as ReactPointerEvent,useEffect,useMemo,useRef,useState} from 'react';
 import {ArrowRight,Box,CalendarClock,Check,ClipboardList,Factory,FilePlus,Layers3,PackageCheck,Plus,RefreshCw,Save,Search,Settings2,Timer,Truck,X} from 'lucide-react';
 import './production.css';
 
@@ -158,7 +158,43 @@ function DesignForm({api,csrf,templates,onClose,onDone}:{api:string;csrf?:string
  const template=templates.find(item=>String(item.id)===templateId)||templates[0];
  const [name,setName]=useState('Diseño nuevo');const [error,setError]=useState('');const [saving,setSaving]=useState(false);
  const [elements,setElements]=useState<DesignElement[]>([]);
+ const drag=useRef<{index:number;pointerId:number;startX:number;startY:number;startElementX:number;startElementY:number;canvasWidth:number;canvasHeight:number}|null>(null);
  const add=(type:DesignElement['type'])=>setElements(current=>[...current,{type,text:type==='text'?'Texto nuevo':type==='qr'?'QR dinámico':'Logo',x:10+(current.length%5)*8,y:15+(current.length%5)*12,width:type==='qr'?35:50,height:type==='qr'?35:12}]);
+ const startDrag=(event:ReactPointerEvent<HTMLDivElement>,index:number)=>{
+  if(event.button!==0)return;
+  const canvas=event.currentTarget.parentElement;
+  if(!canvas)return;
+  const element=elements[index];
+  drag.current={index,pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,startElementX:element.x,startElementY:element.y,canvasWidth:canvas.clientWidth,canvasHeight:canvas.clientHeight};
+  event.currentTarget.setPointerCapture(event.pointerId);
+  event.preventDefault();
+ };
+ const moveElement=(event:ReactPointerEvent<HTMLDivElement>)=>{
+  const current=drag.current;
+  if(!current||event.pointerId!==current.pointerId)return;
+  const dx=(event.clientX-current.startX)/current.canvasWidth*100;
+  const dy=(event.clientY-current.startY)/current.canvasHeight*100;
+  setElements(items=>items.map((item,index)=>index===current.index?{
+   ...item,
+   x:Math.max(0,Math.min(100-item.width,current.startElementX+dx)),
+   y:Math.max(0,Math.min(100-item.height,current.startElementY+dy))
+  }:item));
+ };
+ const stopDrag=(event:ReactPointerEvent<HTMLDivElement>)=>{
+  if(drag.current?.pointerId===event.pointerId)drag.current=null;
+ };
+ const moveElementWithKeys=(event:ReactKeyboardEvent<HTMLDivElement>,index:number)=>{
+  const offsets:{[key:string]:[number,number]}={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+  const offset=offsets[event.key];
+  if(!offset)return;
+  event.preventDefault();
+  const step=event.shiftKey?5:1;
+  setElements(items=>items.map((item,itemIndex)=>itemIndex===index?{
+   ...item,
+   x:Math.max(0,Math.min(100-item.width,item.x+offset[0]*step)),
+   y:Math.max(0,Math.min(100-item.height,item.y+offset[1]*step))
+  }:item));
+ };
  const submit=async()=>{
   if(!name.trim()){setError('Escribe un nombre para la versión de diseño.');return;}
   setSaving(true);setError('');
@@ -174,7 +210,7 @@ function DesignForm({api,csrf,templates,onClose,onDone}:{api:string;csrf?:string
   {templates.length?<label>Plantilla<select value={template?.id||''} onChange={event=>setTemplateId(event.target.value)}>{templates.map(item=><option key={item.id} value={item.id}>{item.name} — {item.width_mm} × {item.height_mm} mm</option>)}</select></label>:<div className="notice">No hay plantillas activas. Se usará un lienzo de 100 × 150 mm.</div>}
   <label>Nombre de versión<input value={name} onChange={event=>setName(event.target.value)} maxLength={190}/></label>
   <div className="designer-toolbar"><span>Añadir al diseño</span><button type="button" onClick={()=>add('text')}>+ Texto</button><button type="button" onClick={()=>add('qr')}>+ QR</button><button type="button" onClick={()=>add('logo')}>+ Logo</button></div>
-  <div className="designer-canvas" style={{aspectRatio:`${template?.width_mm||100}/${template?.height_mm||150}`}}>{elements.map((element,index)=><div key={`${element.type}-${index}`} className={`design-element ${element.type}`} style={{left:`${element.x}%`,top:`${element.y}%`,width:`${element.width}%`,height:`${element.height}%`}}>{element.type==='qr'?<div className="mini-qr">QR</div>:element.text}</div>)}{!elements.length&&<span>Área de trabajo · {template?.width_mm||100} × {template?.height_mm||150} mm</span>}</div>
+  <div className="designer-canvas" style={{aspectRatio:`${template?.width_mm||100}/${template?.height_mm||150}`}}>{elements.map((element,index)=><div key={`${element.type}-${index}`} className={`design-element ${element.type}`} style={{left:`${element.x}%`,top:`${element.y}%`,width:`${element.width}%`,height:`${element.height}%`}} role="group" tabIndex={0} aria-label={`Mover ${element.text}`} title="Arrastra para mover; usa las flechas para ajustar la posición" onPointerDown={event=>startDrag(event,index)} onPointerMove={moveElement} onPointerUp={stopDrag} onPointerCancel={stopDrag} onKeyDown={event=>moveElementWithKeys(event,index)}>{element.type==='qr'?<div className="mini-qr">QR</div>:element.text}</div>)}{!elements.length&&<span>Área de trabajo · {template?.width_mm||100} × {template?.height_mm||150} mm</span>}</div>
   {template&&<div className="template-specs"><span>Margen de sangrado <strong>{template.bleed_mm} mm</strong></span><span>Margen seguro <strong>{template.safe_margin_mm} mm</strong></span>{template.qr_width_mm&&<span>Ancho QR <strong>{template.qr_width_mm} mm</strong></span>}</div>}
   <div className="modal-actions"><button type="button" className="button secondary" onClick={onClose} disabled={saving}>Cancelar</button><button type="button" className="button" onClick={submit} disabled={saving}>{saving?'Guardando…':'Guardar versión'} <Save size={15}/></button></div>
  </Modal>;
