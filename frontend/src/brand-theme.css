@@ -1,0 +1,32 @@
+:root{--brand-navy:#0c233f;--brand-teal:#19aaa6;--brand-teal-dark:#118984;--brand-mist:#eaf7f6;--brand-paper:#f6f8fa}
+html{font-family:Inter,system-ui,sans-serif}
+h1,h2,h3,h4{font-family:Montserrat,Inter,system-ui,sans-serif}
+.brand{display:block;width:208px;height:50px;flex-shrink:0;gap:0;font-size:0;line-height:0}
+.brand::before{display:block;width:100%;height:100%;background:url('/brand-lockup.png') left center/contain no-repeat;content:''}
+.brand-mark{display:none!important}
+.public-nav .brand,.marketing-nav .brand{width:205px;height:49px}
+footer .brand,.marketing-footer .brand{width:178px;height:43px}
+.login-aside .brand::before,.sidebar .brand::before{filter:brightness(0) invert(1)}
+.admin-brand{display:flex;align-items:flex-start;flex-direction:column;gap:2px;padding:2px 11px 25px}
+.admin-brand-lockup{display:block;width:204px;height:49px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}
+.admin-brand>span:last-child{display:block;align-self:flex-start;margin-left:4px;color:#7f9aaa;font:700 8px Inter,sans-serif;letter-spacing:.18em}
+.admin-sidebar{background:linear-gradient(180deg,#0c233f 0%,#0b1d33 58%,#0c2138 100%)}
+.admin-sidebar nav a.active{border-color:#245354;background:linear-gradient(100deg,#123b50,#153540);box-shadow:inset 3px 0 var(--brand-teal),0 4px 12px #080f1666}
+.admin-sidebar nav a.active .admin-nav-icon,.admin-sidebar .admin-workspace-label>span{background:#17454e;color:#73d8d1}
+.admin-sidebar .admin-workspace-label{border-color:#263e4d;background:#132d40}
+.digital-page.menu{background:#f4f8fa;color:var(--brand-navy)}
+.digital-page.menu::after{background-color:#f4f8fa;background-image:radial-gradient(ellipse at 9% 12%,#c9eeeb66 0,transparent 30%),radial-gradient(ellipse at 91% 35%,#dcebf4a6 0,transparent 33%),repeating-linear-gradient(135deg,#0c233f06 0 1px,transparent 1px 5px);background-position:center;background-repeat:repeat;background-size:cover}
+.digital-page.menu .digital-head{background:linear-gradient(135deg,#0c233f,#12475a)}
+.digital-page.menu .digital-head .eyebrow{color:#7de0d9}
+.digital-page.menu .digital-head h1,.digital-page.menu .digital-menu h2{font-family:Montserrat,Inter,sans-serif}
+.digital-page.menu .digital-menu section{border-color:#e0e9ee}
+.digital-page.menu .digital-menu h2{border-color:#e8eef2;color:#0c233f}
+.digital-page.menu .digital-menu article{border-color:#edf1f4}
+.digital-page.menu .digital-menu article:hover{background:#f7fbfc}
+.digital-page.menu .digital-menu article strong{border-color:#cfe9e7;background:#eaf7f6;color:#087873}
+.digital-page.menu .digital-menu-pagination{border-color:#e8eef2;background:#f9fbfc}
+.digital-page.menu .digital-menu-pagination button{border-color:#dbe7eb;color:#087873}
+.digital-page.menu .digital-menu-pagination button:hover:not(:disabled){border-color:#a9d8d5;background:#eaf7f6}
+.digital-page.menu .digital-footer{border-color:#e0e9ee;background:#f8fafb}
+.digital-page.menu .digital-footer strong{color:#118984}
+@media(max-width:600px){.brand{width:174px;height:42px}.public-nav .brand,.marketing-nav .brand{width:170px;height:41px}.admin-brand-lockup{width:200px;height:48px}}
