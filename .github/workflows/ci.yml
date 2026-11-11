@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Backend (PHP) -----------------------------------------------------
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo, pdo_pgsql
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHP tests
+        run: composer test
+
+      # Frontend (Node) ---------------------------------------------------
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: npm run build
+
+      # (Optional) Deploy steps could be added here for Netlify/Vercel
