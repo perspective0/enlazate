@@ -1,3 +1,5 @@
+<?php
+declare(strict_types=1);
 
 function pagination_params(array $queryParams): array {
     $page = max(1, (int)($queryParams['page'] ?? 1));
@@ -6,7 +8,6 @@ function pagination_params(array $queryParams): array {
     return [$page, $perPage, $offset];
 }
 
-declare(strict_types=1);
 $autoload = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 if (is_readable($autoload)) require_once $autoload;
 $envFile = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . '.env';
