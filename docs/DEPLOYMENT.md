@@ -14,3 +14,5 @@
 El frontend debe usar `VITE_API_URL=https://api.enlazate.com.do`. Cambiar `FRONTEND_ORIGIN` y `APP_ENV=production` en el entorno de la API.
 
 En Railway, mantener `backend` como directorio raíz del servicio PHP. `backend/composer.json` declara `ext-pdo_mysql` para que Railpack instale el controlador MySQL requerido por PDO.
+
+En Netlify, publicar `frontend/dist`. El archivo `frontend/public/_redirects` conserva el proxy `/api/*` hacia Railway y reescribe las rutas de la aplicación a `index.html` para que URLs como `/admin` funcionen al abrirlas directamente.
