@@ -13,4 +13,4 @@
 
 El frontend debe usar `VITE_API_URL=https://api.enlazate.com.do`. Cambiar `FRONTEND_ORIGIN` y `APP_ENV=production` en el entorno de la API.
 
-En Railway, mantener `backend` como directorio raíz del servicio PHP. `backend/composer.json` declara `ext-pdo_mysql` para que Nixpacks instale el controlador MySQL requerido por PDO.
+En Railway, mantener `backend` como directorio raíz del servicio PHP. `backend/composer.json` declara `ext-pdo_mysql` para que Railpack instale el controlador MySQL requerido por PDO.
