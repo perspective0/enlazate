@@ -10,7 +10,7 @@ export default function DigitalPage({api,slug}:{api:string;slug:string}){
  const [page,setPage]=useState<Page|null>(null);const [error,setError]=useState('');const [categoryPages,setCategoryPages]=useState<Record<number,number>>({});
  useEffect(()=>{
   let cancelled=false;
-  fetch(`${api}/p/${slug}`).then(async response=>{
+  fetch(`${api}/api/digital-pages/${slug}`).then(async response=>{
    const data=await response.json().catch(()=>({}));
    if(!response.ok)throw new Error(data.message||'Página no disponible');
    return data;
