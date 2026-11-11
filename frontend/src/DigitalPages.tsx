@@ -37,6 +37,27 @@ function pageContent(page:DigitalPageRecord):PageContent{
 }
 function pageKind(type:PageType){return pageTypes.find(item=>item.id===type)||pageTypes[0];}
 function pageDate(value:string){const date=new Date(value);return Number.isNaN(date.getTime())?'Fecha no disponible':date.toLocaleDateString('es-DO',{day:'numeric',month:'short',year:'numeric'});}
+async function copyText(value:string){
+ try{
+  await navigator.clipboard.writeText(value);
+  return;
+ }catch{
+  const textarea=document.createElement('textarea');
+  textarea.value=value;
+  textarea.setAttribute('readonly','');
+  textarea.style.position='fixed';
+  textarea.style.opacity='0';
+  document.body.appendChild(textarea);
+  try{
+   textarea.focus();
+   textarea.select();
+   textarea.setSelectionRange(0,textarea.value.length);
+   if(!document.execCommand('copy'))throw new Error('El navegador no permitió copiar el enlace.');
+  }finally{
+   textarea.remove();
+  }
+ }
+}
 
 export default function DigitalPages({api,csrf}:{api:string;csrf?:string}){
  const [items,setItems]=useState<DigitalPageRecord[]>([]);
@@ -63,8 +84,8 @@ export default function DigitalPages({api,csrf}:{api:string;csrf?:string}){
  },[filter,items,query]);
  const pageUrl=(page:DigitalPageRecord)=>`${window.location.origin}/p/${page.slug}`;
  const copyUrl=async(page:DigitalPageRecord)=>{
-  try{await navigator.clipboard.writeText(pageUrl(page));setNotice(`Enlace de “${page.title}” copiado.`);window.setTimeout(()=>setNotice(''),3000);}
-  catch{setError('No se pudo copiar el enlace. Comprueba los permisos del navegador.');}
+  try{await copyText(pageUrl(page));setError('');setNotice(`Enlace de “${page.title}” copiado.`);window.setTimeout(()=>setNotice(''),3000);}
+  catch(reason){setError(reason instanceof Error?reason.message:'No se pudo copiar el enlace. Comprueba los permisos del navegador.');}
  };
  return <section className="digital-pages">
   <div className="digital-pages-heading">
@@ -101,7 +122,7 @@ export default function DigitalPages({api,csrf}:{api:string;csrf?:string}){
       {['reviews','maps','whatsapp'].includes(page.page_type)&&<p className="digital-page-preview"><ExternalLink size={14}/>{content.url?'Enlace configurado':'Enlace sin configurar'}</p>}
       <div className="digital-page-card-link"><span>ENLACE DE LA PÁGINA</span><code title={pageUrl(page)}>{pageUrl(page)}</code></div>
       <div className="digital-page-card-footer"><span>{pageDate(page.created_at)}</span>
-       <div><button type="button" className="digital-page-action manage" onClick={()=>{setManageId(page.id);setError('');}} aria-label={`Gestionar ${page.title}`} title="Gestionar contenido"><Edit3 size={15}/><span>Gestionar</span></button>{isPublic(page)&&<a className="digital-page-action" href={pageUrl(page)} target="_blank" rel="noreferrer" aria-label={`Abrir ${page.title}`} title="Vista pública"><ExternalLink size={15}/></a>}<button type="button" className="digital-page-action" onClick={()=>copyUrl(page)} aria-label={`Copiar enlace de ${page.title}`} title="Copiar enlace"><Copy size={15}/></button></div>
+       <div><button type="button" className="digital-page-action manage" onClick={()=>{setManageId(page.id);setError('');}} aria-label={`Gestionar ${page.title}`} title="Gestionar contenido"><Edit3 size={15}/><span>Gestionar</span></button>{isPublic(page)&&<a className="digital-page-action" href={pageUrl(page)} aria-label={`Abrir ${page.title}`} title="Vista pública"><ExternalLink size={15}/></a>}<button type="button" className="digital-page-action" onClick={()=>copyUrl(page)} aria-label={`Copiar enlace de ${page.title}`} title="Copiar enlace"><Copy size={15}/></button></div>
       </div>
      </article>;
     })}</div>}
@@ -224,7 +245,7 @@ function ManagePage({api,csrf,pageId,onClose,onUpdated,onDeleted}:{api:string;cs
  return <div className="modal-backdrop digital-pages-backdrop digital-manage-backdrop"><section className="digital-manage-modal" role="dialog" aria-modal="true" aria-labelledby="digital-manage-title">
   <button type="button" className="modal-close" onClick={onClose} aria-label="Cerrar gestión"><X size={18}/></button>
   {loading?<div className="digital-manage-state">Cargando contenido de la página…</div>:!page?<div className="digital-manage-state"><strong>No se pudo abrir esta página</strong>{error&&<p>{error}</p>}<button type="button" className="button secondary" onClick={onClose}>Cerrar</button></div>:<>
-   <div className="digital-manage-header"><p className="eyebrow">GESTIÓN DE CONTENIDO</p><h2 id="digital-manage-title">{page.title}</h2><div className="digital-manage-header-links"><span className={`digital-page-status ${published?'public':'private'}`}><i/>{published?'Pública':'Borrador'}</span><a href={`${window.location.origin}/p/${page.slug}`} target="_blank" rel="noreferrer"><ExternalLink size={13}/> Ver página</a></div></div>
+   <div className="digital-manage-header"><p className="eyebrow">GESTIÓN DE CONTENIDO</p><h2 id="digital-manage-title">{page.title}</h2><div className="digital-manage-header-links"><span className={`digital-page-status ${published?'public':'private'}`}><i/>{published?'Pública':'Borrador'}</span><a href={`${window.location.origin}/p/${page.slug}`}><ExternalLink size={13}/> Ver página</a></div></div>
    {error&&<div className="alert" role="alert">{error}</div>}{notice&&<div className="digital-pages-notice" role="status"><Check size={15}/>{notice}</div>}
    <form className="digital-manage-page-form" onSubmit={savePage}>
     <h3>Datos de la página</h3><div className="digital-manage-two-col"><label>Título<input required maxLength={190} value={title} onChange={event=>setTitle(event.target.value)}/></label><label>Descripción breve<input maxLength={255} value={subtitle} onChange={event=>setSubtitle(event.target.value)} placeholder="Opcional"/></label><label>URL del logo<input type="url" value={logoUrl} onChange={event=>setLogoUrl(event.target.value)} placeholder="https://…"/></label><label>URL de portada<input type="url" value={coverUrl} onChange={event=>setCoverUrl(event.target.value)} placeholder="https://…"/></label></div>
