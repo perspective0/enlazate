@@ -52,7 +52,9 @@ async function copyText(value:string){
    textarea.focus();
    textarea.select();
    textarea.setSelectionRange(0,textarea.value.length);
-   if(!document.execCommand('copy'))throw new Error('El navegador no permitió copiar el enlace.');
+   if(!document.execCommand('copy')){
+    if(window.prompt('No se pudo copiar automáticamente. Copia este enlace:',value)===null)throw new Error('No se copió el enlace.');
+   }
   }finally{
    textarea.remove();
   }
