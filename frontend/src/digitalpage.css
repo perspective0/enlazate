@@ -32,15 +32,16 @@
 .digital-page.menu .digital-footer strong{color:#465b48}
 @media(max-width:900px){.digital-page.menu::after{background-image:radial-gradient(ellipse at 9% 12%,#e0d2b37a 0,transparent 28%),radial-gradient(ellipse at 91% 35%,#d4d7bf73 0,transparent 31%),repeating-linear-gradient(135deg,#82765608 0 1px,transparent 1px 5px);background-size:620px 520px,680px 640px,auto;background-position:left top,right top,left top}}
 
-.digital-page.wifi::after {content: none; background: none;}
 
-  background: #f0f9ff;
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  max-width: 400px;
-  margin: 0 auto;
+.digital-page.wifi .wifi-card {
+   background: #f0f9ff;
+   border-radius: 12px;
+   padding: 24px;
+   text-align: center;
+   max-width: 400px;
+   margin: 0 auto;
 }
+
 .digital-page.wifi .wifi-icon {
   color: #2a7ae2;
   animation: pulse 2s infinite;
