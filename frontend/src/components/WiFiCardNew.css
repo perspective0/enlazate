@@ -1,0 +1,62 @@
+/* WiFiCardNew styling */
+.wifi-card-new {
+  max-width: 360px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.wifi-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.wifi-icon {
+  margin-bottom: 0.5rem;
+}
+
+.wifi-network {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.wifi-body {
+  margin-top: 0.5rem;
+}
+
+.wifi-label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.wifi-pass-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.wifi-pass {
+  background: rgba(255,255,255,0.2);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.wifi-copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.wifi-copied-notice {
+  margin-top: 0.5rem;
+  color: #4caf50;
+  font-weight: 500;
+}

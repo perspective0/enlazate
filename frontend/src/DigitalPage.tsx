@@ -11,10 +11,8 @@ import {
   BookOpen,
 } from "lucide-react";
 import "./digitalpage.css";
+import { WiFiCardPremium } from "./components/WiFiCardPremium";
 
-// -------------------------------------------------
-// Wi‑Fi Card – visual y personalizable
-// -------------------------------------------------
 function WiFiCard({
   network,
   password,
@@ -61,7 +59,6 @@ function WiFiCard({
     </main>
   );
 }
-
 
 const MENU_ITEMS_PER_PAGE = 6;
 type MenuItem = {
@@ -132,14 +129,35 @@ export default function DigitalPage({
     <div
       className={`digital-page ${page.page_type}${page.page_type === "menu" && page.cover_url ? " has-cover" : ""}`}
     >
-      {page.cover_url && (
+      {page.page_type === "wifi" && page.cover_url && (
+        <div
+          className="wifi-cover-wrapper"
+          style={{ backgroundImage: `url(${page.cover_url})` }}
+        >
+          {page.logo_url && (
+            <img className="wifi-logo-overlay" src={page.logo_url} alt="" />
+          )}
+        </div>
+      )}
+      {page.page_type !== "wifi" && page.cover_url && (
         <img className="digital-cover" src={page.cover_url} alt="" />
       )}
       <header className="digital-head">
-        {page.logo_url && <img src={page.logo_url} alt="" />}
+        {page.page_type !== "wifi" && page.logo_url && (
+          <img src={page.logo_url} alt="" />
+        )}
         {page.business_name && <p className="eyebrow">{page.business_name}</p>}
-        <h1>{page.title}</h1>
-        {page.subtitle && <p>{page.subtitle}</p>}
+        {page.page_type === "wifi" ? (
+          <section className="wifi-header-premium">
+            <h1>{page.title}</h1>
+            {page.subtitle && <p>{page.subtitle}</p>}
+          </section>
+        ) : (
+          <>
+            <h1>{page.title}</h1>
+            {page.subtitle && <p>{page.subtitle}</p>}
+          </>
+        )}
       </header>
       {page.page_type === "menu" && (
         <main className="digital-menu">
@@ -238,7 +256,7 @@ export default function DigitalPage({
         </main>
       )}
       {page.page_type === "wifi" && (
-        <WiFiCard
+        <WiFiCardPremium
           network={content.network}
           password={content.password}
           background="#e8f4ff"
@@ -292,8 +310,10 @@ export default function DigitalPage({
           )}
         </main>
       )}
+
       <footer className="digital-footer">
-        Impulsado por <strong>ENLÁZATE</strong>
+        <div className="powered-by">Impulsado por ENLÁZATE</div>
+        <div className="footer-author">By Francisco Leocadio</div>
       </footer>
     </div>
   );
