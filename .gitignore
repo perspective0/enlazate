@@ -1,11 +1,12 @@
-.env
+# Ignore uploaded images
+/uploads/
+# Node modules
 node_modules/
-dist/
+# Composer vendor folder
 vendor/
-storage/uploads/
-storage/logs/
-storage/rate/*.json
+# IDE files
+.idea/
 *.log
-*.tsbuildinfo
-frontend/vite.config.js
-frontend/vite.config.d.ts
+.DS_Store
+.env
+.env.example

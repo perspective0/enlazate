@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" fill="none">
+  <defs>
+    <linearGradient id="page" x1="120" y1="40" x2="1650" y2="1160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FBFC"/>
+      <stop offset="1" stop-color="#E9F0F3"/>
+    </linearGradient>
+    <linearGradient id="acrylic" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFFFF" stop-opacity=".74"/>
+      <stop offset=".46" stop-color="#F9FFFF" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#D8E9ED" stop-opacity=".63"/>
+    </linearGradient>
+    <linearGradient id="acrylic-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#183A56"/>
+      <stop offset="1" stop-color="#0C233F"/>
+    </linearGradient>
+    <linearGradient id="counter" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F1E8DD"/>
+      <stop offset="1" stop-color="#D8C6B3"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#25C3BA"/>
+      <stop offset="1" stop-color="#118984"/>
+    </linearGradient>
+    <filter id="shadow" x="-35%" y="-25%" width="170%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dy="18"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".19"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft-shadow" x="-35%" y="-35%" width="170%" height="190%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9"/>
+      <feOffset dy="9"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".12"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="modules-a" width="30" height="30" patternUnits="userSpaceOnUse">
+      <rect width="30" height="30" fill="#fff"/>
+      <path d="M2 2h11v11H2zM18 2h8v8h-8zM17 17h11v11H17zM2 19h8v9H2z" fill="#0C233F"/>
+    </pattern>
+    <pattern id="modules-b" width="28" height="28" patternUnits="userSpaceOnUse">
+      <rect width="28" height="28" fill="#fff"/>
+      <path d="M1 1h9v12H1zM14 2h12v8H14zM16 15h11v12H16zM2 18h9v9H2z" fill="#0C233F"/>
+    </pattern>
+    <pattern id="modules-c" width="31" height="31" patternUnits="userSpaceOnUse">
+      <rect width="31" height="31" fill="#fff"/>
+      <path d="M2 2h12v9H2zM19 1h10v13H19zM18 19h11v10H18zM2 18h9v11H2z" fill="#0C233F"/>
+    </pattern>
+    <g id="qr-a">
+      <rect width="210" height="210" rx="8" fill="#fff"/>
+      <rect x="14" y="14" width="55" height="55" rx="3" fill="#0C233F"/>
+      <rect x="24" y="24" width="35" height="35" fill="#fff"/>
+      <rect x="33" y="33" width="17" height="17" fill="#0C233F"/>
+      <rect x="141" y="14" width="55" height="55" rx="3" fill="#0C233F"/>
+      <rect x="151" y="24" width="35" height="35" fill="#fff"/>
+      <rect x="160" y="33" width="17" height="17" fill="#0C233F"/>
+      <rect x="14" y="141" width="55" height="55" rx="3" fill="#0C233F"/>
+      <rect x="24" y="151" width="35" height="35" fill="#fff"/>
+      <rect x="33" y="160" width="17" height="17" fill="#0C233F"/>
+      <path d="M80 17h18v18H80zM104 17h21v12h-21zM78 44h16v16H78zM105 41h14v21h-14zM82 77h18v17H82zM108 74h14v14h-14zM133 81h17v18h-17zM158 79h27v13h-27zM76 105h15v19H76zM100 101h19v13h-19zM128 108h16v16h-16zM153 104h24v18h-24zM80 132h20v14H80zM107 129h15v23h-15zM134 134h15v14h-15zM159 130h25v18h-25zM79 158h16v15H79zM104 160h20v21h-20zM132 158h14v18h-14zM157 161h23v15h-23zM84 184h16v12H84zM130 184h21v12h-21zM165 184h24v12h-24z" fill="#0C233F"/>
+    </g>
+    <g id="qr-b">
+      <rect width="196" height="196" rx="8" fill="#fff"/>
+      <rect x="12" y="12" width="52" height="52" rx="3" fill="#0C233F"/>
+      <rect x="22" y="22" width="32" height="32" fill="#fff"/>
+      <rect x="31" y="31" width="14" height="14" fill="#0C233F"/>
+      <rect x="132" y="12" width="52" height="52" rx="3" fill="#0C233F"/>
+      <rect x="142" y="22" width="32" height="32" fill="#fff"/>
+      <rect x="151" y="31" width="14" height="14" fill="#0C233F"/>
+      <rect x="12" y="132" width="52" height="52" rx="3" fill="#0C233F"/>
+      <rect x="22" y="142" width="32" height="32" fill="#fff"/>
+      <rect x="31" y="151" width="14" height="14" fill="#0C233F"/>
+      <path d="M76 15h19v18H76zM101 13h20v14h-20zM76 42h15v18H76zM103 39h18v22h-18zM129 75h17v18h-17zM155 74h25v15h-25zM78 75h18v17H78zM103 73h16v14h-16zM76 101h15v20H76zM100 99h19v17h-19zM128 102h16v20h-16zM153 100h27v17h-27zM77 128h20v15H77zM103 127h16v22h-16zM129 129h18v17h-18zM154 127h24v16h-24zM78 156h18v15H78zM104 155h19v22h-19zM131 157h17v21h-17zM157 154h23v17h-23z" fill="#0C233F"/>
+    </g>
+    <g id="qr-c">
+      <rect width="202" height="202" rx="8" fill="#fff"/>
+      <rect x="13" y="13" width="53" height="53" rx="3" fill="#0C233F"/>
+      <rect x="23" y="23" width="33" height="33" fill="#fff"/>
+      <rect x="32" y="32" width="15" height="15" fill="#0C233F"/>
+      <rect x="136" y="13" width="53" height="53" rx="3" fill="#0C233F"/>
+      <rect x="146" y="23" width="33" height="33" fill="#fff"/>
+      <rect x="155" y="32" width="15" height="15" fill="#0C233F"/>
+      <rect x="13" y="136" width="53" height="53" rx="3" fill="#0C233F"/>
+      <rect x="23" y="146" width="33" height="33" fill="#fff"/>
+      <rect x="32" y="155" width="15" height="15" fill="#0C233F"/>
+      <path d="M77 16h18v20H77zM103 15h24v14h-24zM78 43h17v18H78zM104 40h18v22h-18zM133 78h17v18h-17zM158 77h24v16h-24zM78 77h18v18H78zM104 76h17v16h-17zM77 104h17v19H77zM103 103h20v16h-20zM132 104h17v19h-17zM157 103h25v16h-25zM79 132h18v15H79zM105 130h17v23h-17zM132 132h18v16h-18zM159 131h22v17h-22zM78 159h20v16H78zM105 159h19v22h-19zM134 160h16v19h-16zM159 159h24v17h-24z" fill="#0C233F"/>
+    </g>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#page)"/>
+  <circle cx="1580" cy="111" r="205" fill="#DDF1F0" opacity=".52"/>
+  <circle cx="189" cy="1030" r="248" fill="#E3EEF5" opacity=".6"/>
+  <text x="92" y="94" fill="#118984" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" letter-spacing="4">ENLÁZATE  /  LÍNEA DE PRODUCTO</text>
+  <text x="90" y="164" fill="#0C233F" font-family="Montserrat,Arial,sans-serif" font-size="52" font-weight="800" letter-spacing="-2">Una base. Toda tu experiencia digital.</text>
+  <text x="94" y="205" fill="#687A89" font-family="Inter,Arial,sans-serif" font-size="20">Tres direcciones para convertir un QR dinámico en una pieza elegante de mostrador.</text>
+
+  <g transform="translate(78 258)">
+    <rect width="520" height="844" rx="25" fill="#fff" stroke="#DDE6EB"/>
+    <text x="32" y="52" fill="#118984" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="2">01  /  FIRMA DE MARCA</text>
+    <text x="32" y="88" fill="#0C233F" font-family="Montserrat,Arial,sans-serif" font-size="27" font-weight="800">Minimal y premium</text>
+    <rect x="0" y="114" width="520" height="590" fill="#F4F7F7"/>
+    <rect x="0" y="585" width="520" height="119" fill="url(#counter)"/>
+    <path d="M0 585H520" stroke="#D8C7B4"/>
+    <ellipse cx="267" cy="585" rx="133" ry="25" fill="#324250" opacity=".12"/>
+    <g filter="url(#shadow)">
+      <path d="M173 571 194 548h145l17 23-22 12H196z" fill="#D3E5E8" fill-opacity=".72" stroke="#B8D0D5" stroke-width="2"/>
+      <path d="M194 548V282q0-15 15-15h114q15 0 15 15v266l-18 17H212z" fill="url(#acrylic)" stroke="#B5CCD3" stroke-width="3"/>
+      <path d="M205 285q0-8 8-8h8v246l-8 11h-8z" fill="#fff" opacity=".72"/>
+      <path d="M324 285v247l7-7V285q0-8-7-8" fill="#fff" opacity=".62"/>
+      <rect x="218" y="298" width="94" height="35" rx="3" fill="#fff"/>
+      <image href="/brand-lockup.png" x="220" y="300" width="90" height="31" preserveAspectRatio="xMidYMid meet"/>
+      <text x="265" y="363" text-anchor="middle" fill="#0C233F" font-family="Montserrat,Arial,sans-serif" font-size="17" font-weight="800" letter-spacing=".5">MENÚ DIGITAL</text>
+      <text x="265" y="388" text-anchor="middle" fill="#6B7B88" font-family="Inter,Arial,sans-serif" font-size="11">Todo lo que buscas, a un escaneo.</text>
+      <g transform="translate(210 402) scale(.52)"><use href="#qr-a"/></g>
+      <rect x="224" y="517" width="82" height="20" rx="10" fill="#EAF7F6"/>
+      <text x="265" y="531" text-anchor="middle" fill="#118984" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="1">ESCANÉAME</text>
+    </g>
+    <g transform="translate(32 731)">
+      <circle cx="12" cy="10" r="5" fill="#19AAA6"/>
+      <text x="29" y="15" fill="#33485B" font-family="Inter,Arial,sans-serif" font-size="14">Logo protagonista · QR grande · acrílico transparente</text>
+      <text x="0" y="51" fill="#82909A" font-family="Inter,Arial,sans-serif" font-size="12">Ideal para restaurantes, cafeterías y recepción.</text>
+    </g>
+  </g>
+
+  <g transform="translate(640 258)">
+    <rect width="520" height="844" rx="25" fill="#fff" stroke="#DDE6EB"/>
+    <text x="32" y="52" fill="#118984" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="2">02  /  MENÚ + NFC</text>
+    <text x="32" y="88" fill="#0C233F" font-family="Montserrat,Arial,sans-serif" font-size="27" font-weight="800">Toca o escanea</text>
+    <rect x="0" y="114" width="520" height="590" fill="#EEF3F5"/>
+    <rect x="0" y="585" width="520" height="119" fill="url(#counter)"/>
+    <path d="M0 585H520" stroke="#D8C7B4"/>
+    <ellipse cx="269" cy="585" rx="141" ry="25" fill="#324250" opacity=".14"/>
+    <g filter="url(#shadow)">
+      <path d="M158 571 182 545h166l20 26-23 13H181z" fill="#D4E5E8" fill-opacity=".75" stroke="#B7CFD4" stroke-width="2"/>
+      <path d="M183 545V260q0-16 16-16h132q16 0 16 16v285l-19 18H204z" fill="url(#acrylic-dark)" stroke="#092039" stroke-width="3"/>
+      <path d="M193 263q0-9 9-9h9v262l-9 12h-9z" fill="#648398" opacity=".4"/>
+      <rect x="211" y="267" width="111" height="39" rx="3" fill="#fff"/>
+      <image href="/brand-lockup.png" x="214" y="270" width="105" height="33" preserveAspectRatio="xMidYMid meet"/>
+      <text x="265" y="339" text-anchor="middle" fill="#fff" font-family="Montserrat,Arial,sans-serif" font-size="18" font-weight="800">MENÚ Y MÁS</text>
+      <text x="265" y="361" text-anchor="middle" fill="#B7D1DC" font-family="Inter,Arial,sans-serif" font-size="10">Elige cómo quieres conectar</text>
+      <g transform="translate(207 376) scale(.49)"><use href="#qr-b"/></g>
+      <circle cx="265" cy="508" r="17" fill="#1BAAA5"/>
+      <path d="M258 508q7-10 14 0M261 512q4-6 8 0M265 516h.1" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <text x="265" y="544" text-anchor="middle" fill="#C5D8E1" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="1.2">ACERCA TU TELÉFONO</text>
+    </g>
+    <g transform="translate(32 731)">
+      <circle cx="12" cy="10" r="5" fill="#19AAA6"/>
+      <text x="29" y="15" fill="#33485B" font-family="Inter,Arial,sans-serif" font-size="14">Cara azul marino · QR dinámico · zona NFC</text>
+      <text x="0" y="51" fill="#82909A" font-family="Inter,Arial,sans-serif" font-size="12">Una experiencia fluida, incluso sin abrir la cámara.</text>
+    </g>
+  </g>
+
+  <g transform="translate(1202 258)">
+    <rect width="520" height="844" rx="25" fill="#fff" stroke="#DDE6EB"/>
+    <text x="32" y="52" fill="#118984" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="2">03  /  EXPERIENCIA COMPLETA</text>
+    <text x="32" y="88" fill="#0C233F" font-family="Montserrat,Arial,sans-serif" font-size="27" font-weight="800">Todo conectado</text>
+    <rect x="0" y="114" width="520" height="590" fill="#F2F6F7"/>
+    <rect x="0" y="585" width="520" height="119" fill="url(#counter)"/>
+    <path d="M0 585H520" stroke="#D8C7B4"/>
+    <ellipse cx="266" cy="585" rx="139" ry="25" fill="#324250" opacity=".13"/>
+    <g filter="url(#shadow)">
+      <path d="M164 571 185 547h162l21 24-22 13H185z" fill="#D2E4E7" fill-opacity=".74" stroke="#B8D0D5" stroke-width="2"/>
+      <path d="M186 547V276q0-15 15-15h130q15 0 15 15v271l-18 18H204z" fill="url(#acrylic)" stroke="#B5CCD3" stroke-width="3"/>
+      <path d="M197 280q0-8 8-8h8v248l-8 12h-8z" fill="#fff" opacity=".74"/>
+      <rect x="214" y="277" width="104" height="37" rx="3" fill="#fff"/>
+      <image href="/brand-lockup.png" x="216" y="280" width="100" height="32" preserveAspectRatio="xMidYMid meet"/>
+      <text x="266" y="344" text-anchor="middle" fill="#0C233F" font-family="Montserrat,Arial,sans-serif" font-size="16" font-weight="800">HOLA, BIENVENIDO</text>
+      <g transform="translate(215 360) scale(.50)"><use href="#qr-c"/></g>
+      <text x="266" y="474" text-anchor="middle" fill="#607684" font-family="Inter,Arial,sans-serif" font-size="10">UN SOLO ESCANEO PARA:</text>
+      <g>
+        <rect x="204" y="487" width="124" height="22" rx="11" fill="#EAF7F6"/>
+        <circle cx="218" cy="498" r="3" fill="#19AAA6"/>
+        <text x="227" y="502" fill="#176D70" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">MENÚ DIGITAL</text>
+        <rect x="204" y="514" width="124" height="22" rx="11" fill="#EFF3F7"/>
+        <circle cx="218" cy="525" r="3" fill="#0C233F"/>
+        <text x="227" y="529" fill="#33485B" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">RESEÑAS</text>
+        <rect x="204" y="541" width="124" height="22" rx="11" fill="#EFF3F7"/>
+        <circle cx="218" cy="552" r="3" fill="#0C233F"/>
+        <text x="227" y="556" fill="#33485B" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">CONTACTO</text>
+      </g>
+    </g>
+    <g transform="translate(32 731)">
+      <circle cx="12" cy="10" r="5" fill="#19AAA6"/>
+      <text x="29" y="15" fill="#33485B" font-family="Inter,Arial,sans-serif" font-size="14">Un código para menú, reseñas y contacto</text>
+      <text x="0" y="51" fill="#82909A" font-family="Inter,Arial,sans-serif" font-size="12">Los destinos se pueden actualizar sin cambiar el QR.</text>
+    </g>
+  </g>
+
+  <text x="90" y="1160" fill="#84919A" font-family="Inter,Arial,sans-serif" font-size="13">CONCEPTO VISUAL · Materiales, proporciones y acabados sujetos a fabricación. Los códigos mostrados son ilustrativos.</text>
+  <text x="1710" y="1160" text-anchor="end" fill="#0C233F" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="2">ENLÁZATE</text>
+</svg>
