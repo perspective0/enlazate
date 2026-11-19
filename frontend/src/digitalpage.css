@@ -71,6 +71,91 @@
 }
 
 .digital-page .digital-footer {
+  /* existing styles */
+}
+
+/* Contact page enhancements */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f0f9ff, #e0f0ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.contact-icon {
+  color: #0066cc;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: #0066cc;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.contact-button:hover {
+  background: #004f99;
+  transform: translateY(-2px);
+}
+
+.contact-button.secondary {
+  background: #fff;
+  color: #0066cc;
+  border: 1px solid #0066cc;
+}
+
+.contact-button.secondary:hover {
+  background: #e6f0ff;
+}
+
+.button-icon {
+  stroke: currentColor;
+}
+
+.contact-placeholder {
+  color: #777;
+  font-style: italic;
+}
+
+/* Fade-in animation for sections */
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   position: relative
 }
 

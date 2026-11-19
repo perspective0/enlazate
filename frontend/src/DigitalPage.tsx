@@ -6,6 +6,7 @@ import {
   ExternalLink,
   MapPin,
   Phone,
+  Mail,
   Star,
   Wifi,
   BookOpen,
@@ -264,22 +265,27 @@ export default function DigitalPage({
         />
       )}
       {page.page_type === "contact" && (
-        <main className="digital-action">
-          <Phone size={38} />
-          {content.phone && (
-            <a className="button" href={`tel:${content.phone}`}>
-              Llamar
-            </a>
-          )}
-          {content.email && (
-            <a className="button secondary" href={`mailto:${content.email}`}>
-              Enviar correo
-            </a>
-          )}
-          {!content.phone && !content.email && (
-            <p>Los datos de contacto estarán disponibles próximamente.</p>
-          )}
-        </main>
+        <section className="digital-action contact-section fade-in">
+          <div className="contact-icons">
+            {content.phone && <Phone size={32} className="contact-icon" />}
+            {content.email && <Mail size={32} className="contact-icon" />}
+          </div>
+          <div className="contact-buttons">
+            {content.phone && (
+              <a className="button contact-button" href={`tel:${content.phone}`}>
+                <Phone size={16} className="button-icon" /> Llamar
+              </a>
+            )}
+            {content.email && (
+              <a className="button secondary contact-button" href={`mailto:${content.email}`}>
+                <Mail size={16} className="button-icon" /> Enviar correo
+              </a>
+            )}
+            {!content.phone && !content.email && (
+              <p className="contact-placeholder">Los datos de contacto estarán disponibles próximamente.</p>
+            )}
+          </div>
+        </section>
       )}
       {["reviews", "maps", "whatsapp"].includes(page.page_type) && (
         <main className="digital-action">
