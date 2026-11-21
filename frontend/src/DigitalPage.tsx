@@ -266,23 +266,49 @@ export default function DigitalPage({
       )}
       {page.page_type === "contact" && (
         <section className="digital-action contact-section fade-in">
-          <div className="contact-icons">
-            {content.phone && <Phone size={32} className="contact-icon" />}
-            {content.email && <Mail size={32} className="contact-icon" />}
+          <div className="contact-intro">
+            <div className="contact-icons">
+              {content.phone && (
+                <div className="contact-icon-box">
+                  <Phone size={23} />
+                </div>
+              )}
+              {content.email && (
+                <div className="contact-icon-box">
+                  <Mail size={23} />
+                </div>
+              )}
+            </div>
+
+            <h2>Estamos a tu disposición</h2>
+            <p>Comunícate con nosotros a través de tu canal preferido.</p>
           </div>
+
           <div className="contact-buttons">
             {content.phone && (
-              <a className="button contact-button" href={`tel:${content.phone}`}>
-                <Phone size={16} className="button-icon" /> Llamar
+              <a
+                className="button contact-button"
+                href={`tel:${content.phone}`}
+              >
+                <Phone size={18} className="button-icon" />
+                <span>Llamar</span>
               </a>
             )}
+
             {content.email && (
-              <a className="button secondary contact-button" href={`mailto:${content.email}`}>
-                <Mail size={16} className="button-icon" /> Enviar correo
+              <a
+                className="button secondary contact-button"
+                href={`mailto:${content.email}`}
+              >
+                <Mail size={18} className="button-icon" />
+                <span>Enviar correo</span>
               </a>
             )}
+
             {!content.phone && !content.email && (
-              <p className="contact-placeholder">Los datos de contacto estarán disponibles próximamente.</p>
+              <p className="contact-placeholder">
+                Los datos de contacto estarán disponibles próximamente.
+              </p>
             )}
           </div>
         </section>

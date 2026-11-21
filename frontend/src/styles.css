@@ -1472,3 +1472,244 @@ code {
     margin: 18px 0;
     font: 800 18px Montserrat
 }
+
+/* =========================================
+   ENLÁZATE — CONTACT PAGE REDESIGN
+   Exclusivo para page_type="contact"
+========================================= */
+
+.digital-page.contact {
+    --contact-primary: #0066cc;
+    --contact-primary-dark: #004fa3;
+    --contact-text: #142b45;
+    --contact-muted: #718096;
+    --contact-bg: #f2f6fa;
+    --contact-card: #ffffff;
+
+    background: var(--contact-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Imagen de portada */
+.digital-page.contact .digital-cover {
+    display: block;
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+}
+
+/* Encabezado */
+.digital-page.contact .digital-head {
+    background: transparent;
+    color: var(--contact-text);
+    padding: 28px 20px 10px;
+}
+
+.digital-page.contact .digital-head .eyebrow {
+    color: var(--contact-primary);
+    margin-bottom: 8px;
+}
+
+.digital-page.contact .digital-head h1 {
+    font-size: clamp(25px, 7vw, 34px);
+    letter-spacing: -0.045em;
+    margin-bottom: 8px;
+}
+
+.digital-page.contact .digital-head p:last-child {
+    color: var(--contact-muted);
+    line-height: 1.65;
+}
+
+/* Tarjeta principal */
+.digital-page.contact .contact-section {
+    width: min(440px, calc(100% - 32px));
+    margin: 24px auto 28px;
+    padding: 30px 24px;
+    gap: 25px;
+    background: var(--contact-card);
+    border: 1px solid #e8eef5;
+    border-radius: 20px;
+    box-shadow:
+        0 8px 30px rgba(19, 52, 86, 0.06),
+        0 2px 7px rgba(19, 52, 86, 0.04);
+}
+
+/* Intro */
+.digital-page.contact .contact-intro {
+    width: 100%;
+}
+
+.digital-page.contact .contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.digital-page.contact .contact-icon-box {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    color: var(--contact-primary);
+    background: #edf6ff;
+    border: 1px solid #deedfc;
+    border-radius: 14px;
+}
+
+.digital-page.contact .contact-intro h2 {
+    font: 700 21px Montserrat, sans-serif;
+    color: var(--contact-text);
+    letter-spacing: -0.035em;
+    margin: 0 0 8px;
+}
+
+.digital-page.contact .contact-intro p {
+    max-width: 310px;
+    margin: 0 auto;
+    color: var(--contact-muted);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* Botones */
+.digital-page.contact .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    gap: 12px;
+}
+
+.digital-page.contact .contact-button {
+    width: 100%;
+    min-height: 52px;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    gap: 10px;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.digital-page.contact .contact-button:first-child {
+    background: var(--contact-primary);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.17);
+}
+
+.digital-page.contact .contact-button:first-child:hover {
+    background: var(--contact-primary-dark);
+    box-shadow: 0 6px 16px rgba(0, 102, 204, 0.22);
+}
+
+.digital-page.contact .contact-button.secondary {
+    background: #fff;
+    color: var(--contact-primary);
+    border: 1px solid #cfe2f7;
+}
+
+.digital-page.contact .contact-button.secondary:hover {
+    background: #f4f9ff;
+    border-color: var(--contact-primary);
+}
+
+.digital-page.contact .contact-button:hover {
+    transform: translateY(-2px);
+}
+
+.digital-page.contact .contact-button:active {
+    transform: scale(0.98);
+}
+
+/* Mensaje de contacto vacío */
+.digital-page.contact .contact-placeholder {
+    padding: 15px;
+    color: var(--contact-muted);
+    background: #f6f9fc;
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+/* Footer */
+.digital-page.contact .digital-footer {
+    width: 100%;
+    margin-top: 12px;
+    padding: 22px 16px 25px;
+    background: transparent;
+    border-top: 1px solid #e5ebf1;
+    gap: 5px;
+}
+
+.digital-page.contact .digital-footer .powered-by {
+    font-size: 11px;
+    color: var(--contact-primary);
+    letter-spacing: 0.09em;
+}
+
+.digital-page.contact .digital-footer .footer-author {
+    font-size: 10px;
+    color: #8795a5;
+}
+
+/* Entrada suave */
+.digital-page.contact .contact-section.fade-in {
+    animation: contact-appear 0.45s ease both;
+}
+
+@keyframes contact-appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accesibilidad: respetar movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .digital-page.contact .contact-section.fade-in {
+        animation: none;
+    }
+
+    .digital-page.contact .contact-button {
+        transition: none;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .digital-page.contact .digital-cover {
+        max-height: 220px;
+    }
+
+    .digital-page.contact .digital-head {
+        padding: 24px 18px 8px;
+    }
+
+    .digital-page.contact .contact-section {
+        margin-top: 18px;
+        padding: 26px 20px;
+        border-radius: 18px;
+        gap: 22px;
+    }
+
+    .digital-page.contact .contact-icons {
+        margin-bottom: 18px;
+    }
+
+    .digital-page.contact .contact-intro h2 {
+        font-size: 19px;
+    }
+
+    .digital-page.contact .contact-button {
+        min-height: 50px;
+    }
+}
