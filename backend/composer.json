@@ -4,5 +4,8 @@
     "ext-pdo_mysql": "*",
     "endroid/qr-code": "^6.0",
     "tecnickcom/tcpdf": "^6.8"
+  },
+  "scripts": {
+    "test": "php tests/smoke.php"
   }
 }
